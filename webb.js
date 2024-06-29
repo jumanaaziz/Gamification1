@@ -78,11 +78,12 @@ app.use('/services', services)
 
 
 
-app.listen(3000,() => {
+/*app.listen(3000,() => {
     console.log("web is working")
-})
+})*/
 
-/*if(process.env.NODE_EVN =="test") app.set("port", 3001)
+
+if(process.env.NODE_EVN =="test") app.set("port", 3001)
   else
-app.set("port", process.env.PORT || 3000)*/
+app.set("port", process.env.PORT || 3000)
 
