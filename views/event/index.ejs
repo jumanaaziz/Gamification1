@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <style>
+        body {
+background-color: #0d1021;
+    background-image: 
+       url(
+        '/img/back3.avif'
+
+    );
+    background-repeat: no-repeat;
+    background-position: top;
+    background-position:   0% 0%;
+    background-size: 100% 23%;
+position: relative;
+
+    
+}
+
+
+
+
+
+    </style>
+
+    <title>Gamification services</title>
+</head>
+
+<body>
+
+<section>
+       <div>
+
+ 
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/create">Add new services </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/index">Services</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    
+
+    <header>
+        <h1>What is Gamification ? </h1>
+    </header>
+    <div class="story-box">
+        <p>Gamification transforms non-game activities into game-like experiences to boost participation and
+            productivity.</p>
+        <p> Originating in the 20th century with retail rewards programs and competitive factory settings, the term
+            “gamification” was coined in 2002.
+
+            In 1984, Charles Coonradt's book *The Game of Work* highlighted how game mechanics like clear goals,
+            scorekeeping, and feedback could enhance employee engagement and company performance.
+
+            The digital boom of the 2000s fueled gamification's rise, with consulting firms and SaaS companies adding
+            points, badges, and leaderboards to software. The concept gained widespread attention with Jane McGonigal’s
+            2010 TED Talk and the success of Zynga’s games like Farmville.
+
+            Although its popularity peaked in the early 2010s, gamification remains a valuable tool for enhancing
+            engagement and productivity in various sectors.</p>
+        <button class="btn btn-custom" onclick="openIt()">Watch and enjoy !</button>
+    </div>
+
+    <div class="address-box">
+        <h1>Gamification Services</h1>
+    </div>
+    <section id="services_jumr" class="services">
+
+        <div class="service row">
+            <div class="col-md-6">
+                <img src="/img/Img_Serv_Geners_Characters-2.webp" alt="service1">
+            </div>
+
+            <div class="col-md-6 service-content">
+                <h3>3D Modeling</h3>
+                <p>Whimsy Games offers 3D modeling for games in order
+                    to assist clients in creating immersive virtual gaming
+                    environments. their specialists will pay close attention to
+                    every detail in order to produce vibrant and lifelike individuals,
+                    objects, and settings.</p>
+                <button class="btn btn-custom" onclick="open1()">company website</button>
+
+            </div>
+        </div>
+
+        <div class="service row flex-row-reverse">
+            <div class="col-md-6">
+                <img src="/img/gamification-for-events.jpg" alt="Service 2">
+            </div>
+            <div class="col-md-6 service-content">
+                <h3>Events</h3>
+                <p>Event gamification can help the audience interact with product or service and increase the overall
+                    attention towards the event. Gamification for events is used across all industries, and companies
+                    are even creating event apps with gamification to take engagement to a whole new level..</p>
+                <button class="btn btn-custom" onclick="open2()">company website</button>
+            </div>
+        </div>
+
+
+        <div class="service row">
+            <div class="col-md-6">
+                <img src="/img/Gamification-E-learning-copy.jpg" alt="Service 3">
+            </div>
+            <div class="col-md-6 service-content">
+                <h3>E-learning</h3>
+                <p>The e-learning industry is serving users with a cost-effective, flexible, and accessible option to
+                    acquire quality education. Now with the introduction of gamification, the standard of online
+                    education is massively empowering students and educators to fulfill their desired requirements and
+                    objectives perfectly.</p>
+                <button class="btn btn-custom" onclick="open3()">company website</button>
+            </div>
+        </div>
+
+
+    </section>
+</div>
+ </section>
+
+    <footer>
+        <p>&copy; 2024. All rights reserved.</p>
+        
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        const services_jumr= document.getElementById('services_jumr')
+        const info = JSON.parse(localStorage.getItem('register'))
+        console.log(info)
+        if (localStorage.getItem('register')) {
+            services_jumr.innerHTML +=
+                `  
+                <div class="service row flex-row-reverse">
+            <div class="col-md-6">
+                <img src="${info.img}" alt="Service 3">
+            </div>
+            <div class="col-md-6 service-content">
+                <h3>${info.servname}</h3>
+                <p>${info.des}</p>
+                <button class="btn btn-custom" onclick="location = '${info.lnk}'">company website</button>
+            </div>
+        </div>`
+        }
+    </script>
+
+
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/custom.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "gamification1",
+  "version": "1.0.0",
+  "main": "webb.js",
+  "scripts": {
+    "start": "node webb.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.3",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "jquery": "^3.7.1",
+    "mongodb": "^6.7.0",
+    "mongoose": "^8.4.1",
+    "nodemon": "^3.1.3"
+  }
+}
