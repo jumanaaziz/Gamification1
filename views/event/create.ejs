@@ -9,7 +9,7 @@
  body {
     background-image: linear-gradient(
       45deg,
-      #2b1e77,
+   
       #0b000a,
       #5e204e
 
@@ -37,7 +37,7 @@
   </div>
 
   <h1>Add New Service</h1>
-  <form id="addServiceForm" action="/views/event/create.ejs" method="post">
+  <form id="addServiceForm" action="/index" method="POST">
     <label for="serviceName">Service Name:</label><br>
     <input type="text" id="serviceName" name="serviceName" required><br>
 
@@ -45,33 +45,31 @@
     <textarea id="description" name="description" rows="4" required></textarea><br>
 
     <label for="imageUrl">Image URL:</label><br>
-    <input type="text" id="imageUrl" name="imageUrl" required><br>
+    <input type="url" id="imageUrl" name="imageUrl" required><br>
 
     <label for="companyLink">Company Link:</label><br>
-    <input type="text" id="companyLink" name="companyLink" required><br>
+    <input type="url" id="companyLink" name="companyLink" required><br>
 
     <div class="form-control">
       <a href="/index" class="btn btn-back">Cancel</a>
+    
 
       <button type="submit">Add Service</button>
     </div>
   </form>
 
+
+
+
+
+
   <script src="/webb.js"></script>
 
   <script src="/models/services.js"></script>
-  <script>
-      const form = document.getElementById('addServiceForm');
-      form.onsubmit = async (e) => {
-        e.preventDefault();
-        const servname = document.getElementById('serviceName').value,
-         des = document.getElementById('description').value,
-         img = document.getElementById('imageUrl').value,
-         lnk = document.getElementById('companyLink').value
-         const parssToJson = await JSON.stringify({servname, des, img, lnk })
-         localStorage.setItem('register', parssToJson)
-          window.location = "/"
-      }
-  </script>
+
+
+
+ 
+
 </body>
 </html>

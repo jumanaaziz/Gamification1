@@ -1,30 +1,68 @@
 
 const express= require("express")
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const app=express()
-//const connectDB = require('./config/database');
 
-const bodyParser=require('body-parser')
+//bring ejs template
 
-//bring body parser
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.set('view engine' , 'ejs')
+
+
 
 
 
 //connectDB();
-mongoose.connect('mongodb+srv://Jumana453:Yas123@cluster0.behhing.mongodb.net/myDB?retryWrites=true&w=majority&appName=Cluster0')
-.then(()=>{
+mongoose.connect('mongodb+srv://Jumana453:Yas123@cluster0.behhing.mongodb.net/myDB?retryWrites=true&w=majority&appName=Cluster0') .then(()=>{
     console.log('connected')
 }).catch(()=>{
 console.log('error connecting db')
 })
 
 
-//bring ejs template
+//schema
+const schema = new mongoose.Schema(
+  {serviceName: String,
+  description: String,
+  imageUrl: String,
+  companyLink: String}
 
-app.set('view engine' , 'ejs')
+);
+
+const Create= mongoose.model('create', schema);
+
+ 
+
+//bring body parser
+app.use(bodyParser.json());
+// Middleware to parse URL-encoded bodies (for form submissions)
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.post('/index', (req,res)=>{
+  const app= new Create(
+    {serviceName, description, imageUrl, companyLink }= req.body);
+     app.save().then(()=>res.redirect("/index"));
+});
+
+
+
+
+
+app.get('/index', async (req, res) => {
+
+    try {
+      const allservices = await Create.find({});
+      res.render('../views/event/index', { allservices:allservices });
+    } catch (error) {
+      console.log(`There was an error: ${error}`);
+      res.status(500).send("Error fetching services");
+    }
+  });
+
+
+
 
 
 
@@ -33,17 +71,7 @@ app.use(express.static('public'))
 app.use(express.static('node_modules'))
 
 
-//connected to database
 
-
-
-app.get('/index' ,(req,res)=> {
-
-   
-        res.render('../views/event/index');
-   
-
-})
 
 app.get('/', (req, res) => {
   res.render('../views/event/home');
@@ -54,27 +82,6 @@ app.get('/create', (req, res) => {
     res.render('../views/event/create');
   });
 
-
-
-  //post to save from gpt
-
-  app.post('/event/create', async (req, res) => {
-    const { serviceName, description, imageUrl, companyLink } = req.body;
-    try {
-        const newService = new Service({ serviceName, description, imageUrl, companyLink });
-        await newService.save();
-        res.redirect('/');
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Server Error');
-    }
-})
-
-//bring services routes
-
-const services=require('./routes/service-routes')
-
-app.use('/services', services)
 
 
 

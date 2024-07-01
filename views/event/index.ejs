@@ -8,21 +8,6 @@
     <link rel="stylesheet" href="/css/custom.css">
 
     <style>
-        body {
-background-color: #0d1021;
-    background-image: 
-       url(
-        '/img/back3.avif'
-
-    );
-    background-repeat: no-repeat;
-    background-position: top;
-    background-position:   0% 0%;
-    background-size: 100% 23%;
-position: relative;
-
-    
-}
 
 
 
@@ -35,7 +20,7 @@ position: relative;
 
 <body>
 
-<section>
+    <section class="backgroundimg">
        <div>
 
  
@@ -60,28 +45,28 @@ position: relative;
     </nav>
 
     
-    
-
+   
+    <div class="story-box">
     <header>
         <h1>What is Gamification ? </h1>
     </header>
-    <div class="story-box">
+   
         <p>Gamification transforms non-game activities into game-like experiences to boost participation and
             productivity.</p>
         <p> Originating in the 20th century with retail rewards programs and competitive factory settings, the term
             “gamification” was coined in 2002.
 
-            In 1984, Charles Coonradt's book *The Game of Work* highlighted how game mechanics like clear goals,
-            scorekeeping, and feedback could enhance employee engagement and company performance.
+        
 
-            The digital boom of the 2000s fueled gamification's rise, with consulting firms and SaaS companies adding
-            points, badges, and leaderboards to software. The concept gained widespread attention with Jane McGonigal’s
-            2010 TED Talk and the success of Zynga’s games like Farmville.
+         
 
             Although its popularity peaked in the early 2010s, gamification remains a valuable tool for enhancing
             engagement and productivity in various sectors.</p>
         <button class="btn btn-custom" onclick="openIt()">Watch and enjoy !</button>
     </div>
+   
+
+</section>
 
     <div class="address-box">
         <h1>Gamification Services</h1>
@@ -132,8 +117,33 @@ position: relative;
                 <button class="btn btn-custom" onclick="open3()">company website</button>
             </div>
         </div>
+        <% let x = true; let left = ''; %>
+        <% if (typeof allservices !== 'undefined') {  %>
+            
+           
+              <% allservices.forEach(function(service) { %>
+                <% if(x == true){ x = false; left = 'service row flex-row-reverse' } else{  x = true;  left = ''} %>
+                <div class="service row <%= left %>">
+               
+                        <div class="col-md-6">
 
+                            <img src="<%= service.imageUrl %>" alt="<%= service.serviceName %>">
+                          </div>
+                    <div class="col-md-6 service-content">
+                  <h3><%= service.serviceName %></h3>
+                  <p><%= service.description %></p>
+               
+                  
+                <button class="btn btn-custom" onclick="location = '<%= service.companyLink %>'">Company Link</button>
+                </div>
+                </div>
+                </li>
+              <% }) %>
+         
+          <% } %>
+      
 
+          
     </section>
 </div>
  </section>
@@ -143,26 +153,8 @@ position: relative;
         
     </footer>
 
-    <script src="app.js"></script>
-    <script>
-        const services_jumr= document.getElementById('services_jumr')
-        const info = JSON.parse(localStorage.getItem('register'))
-        console.log(info)
-        if (localStorage.getItem('register')) {
-            services_jumr.innerHTML +=
-                `  
-                <div class="service row flex-row-reverse">
-            <div class="col-md-6">
-                <img src="${info.img}" alt="Service 3">
-            </div>
-            <div class="col-md-6 service-content">
-                <h3>${info.servname}</h3>
-                <p>${info.des}</p>
-                <button class="btn btn-custom" onclick="location = '${info.lnk}'">company website</button>
-            </div>
-        </div>`
-        }
-    </script>
+
+    
 
 
     <script src="/jquery/dist/jquery.js"></script>
